@@ -21,6 +21,28 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({
 
   const handleClick = useCallback(() => {
     let currentQuery = {};
+
+    if (params) {
+      currentQuery = qs.parse(params.toString());
+    }
+
+    const updateQuery: any = {
+      ...currentQuery,
+      category: label,
+    };
+
+    if (params?.get("category") === label) {
+      delete updateQuery.category;
+    }
+
+    const url = qs.stringifyUrl(
+      {
+        url: "/",
+        query: updateQuery,
+      },
+      { skipNull: true }
+    );
+    router.push(url);
   }, []);
 
   return (
