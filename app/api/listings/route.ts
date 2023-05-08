@@ -26,7 +26,7 @@ export async function POST(request: Request) {
 
   Object.keys(body).forEach((value: any) => {
     if (!body[value])
-      throw Error("Current user doesn't have all required fields.");
+      throw new Error("Current user doesn't have all required fields.");
   });
 
   const listing = await prisma.listing.create({
