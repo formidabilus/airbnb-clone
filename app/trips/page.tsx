@@ -34,3 +34,5 @@ const TripsPage = async () => {
     </ClientsOnly>
   );
 };
+
+export default TripsPage;
